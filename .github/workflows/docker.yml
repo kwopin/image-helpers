@@ -16,8 +16,7 @@ jobs:
       - name: Build and push
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
-          docker pull ghcr.io/kwopin/internal/ubuntu-focal:latest
-          docker build --tag ghcr.io/kwopin/internal/ubuntu-focal:$GITHUB_SHA --cache-from ghcr.io/kwopin/internal/ubuntu-focal:latest ubuntu-focal
+          docker build --tag ghcr.io/kwopin/internal/ubuntu-focal:$GITHUB_SHA ubuntu-focal
           docker push ghcr.io/kwopin/internal/ubuntu-focal:$GITHUB_SHA
 
   alpine:
@@ -27,6 +26,5 @@ jobs:
       - name: Build and push
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
-          docker pull ghcr.io/kwopin/internal/alpine:latest
-          docker build --tag ghcr.io/kwopin/internal/alpine:$GITHUB_SHA --cache-from ghcr.io/kwopin/internal/alpine:latest alpine
+          docker build --tag ghcr.io/kwopin/internal/alpine:$GITHUB_SHA alpine
           docker push ghcr.io/kwopin/internal/alpine:$GITHUB_SHA
