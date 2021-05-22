@@ -17,3 +17,6 @@ RUN set -eux; \
 	tar -xvf cmake-$CMAKE_VERSION.tar.gz -C /usr/local/ --strip-components 1; \
     rm -r cmake-$CMAKE_VERSION.tar.gz cmake.zip get-cmake.sh; \
     apk del curl unzip jq
+
+# Those are the run-time deps of CMake (or it will result in missing symbols)
+RUN apk add --no-cache libuv libarchive rhash-libs libcurl
