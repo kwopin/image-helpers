@@ -9,7 +9,8 @@ ENV TZ=Etc/UTC
 RUN apk add --no-cache ca-certificates tzdata build-base
 
 ADD get-cmake.sh /
-RUN apk add --no-cache curl unzip jq; \
+RUN set -eux; \
+    apk add --no-cache curl unzip jq; \
     sh get-cmake.sh; \
     unzip cmake.zip; \
 	tar -xvf cmake-$CMAKE_VERSION.tar.gz -C /usr/local/ --strip-components 1; \
