@@ -12,6 +12,7 @@ emulators to run the unit tests.
 - Current shipped version of CMake is 3.19.8
 - For now version of Alpine is set to latest but it should be set to a specific version
 - Android emulator images are missing
+- To build the Alpine image locally, you need to use the `--build-arg CMAKE_DOWNLOAD_ARTIFACT_TOKEN=<token>` flag with a valid token (required by `get-cmake.sh`)
 
 ## The Alpine and Ubuntu images
 
