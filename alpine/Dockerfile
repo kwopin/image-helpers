@@ -9,6 +9,10 @@ ENV TZ=Etc/UTC
 
 RUN apk add --no-cache ca-certificates tzdata build-base
 
+# This dependency on a different RUN command to highlight it and not forget it
+# later
+RUN apk add --no-cache linux-headers
+
 ADD get-cmake.sh /
 RUN set -eux; \
     apk add --no-cache curl unzip jq; \
