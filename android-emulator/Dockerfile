@@ -45,4 +45,4 @@ EXPOSE 5555
 EXPOSE 5037
 
 USER root
-CMD $ANDROID_SDK_ROOT/platform-tools/adb start-server && $ANDROID_SDK_ROOT/emulator/emulator -avd kwopin -no-window -no-audio
+CMD $ANDROID_SDK_ROOT/platform-tools/adb start-server && $ANDROID_SDK_ROOT/emulator/emulator -avd kwopin -no-window -no-audio -accel off
