@@ -1,0 +1,21 @@
+
+name: android-ndk
+
+on:
+  push:
+    branches: [master]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and push
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
+          docker build --tag ghcr.io/kwopin/internal/android-ndk:$GITHUB_SHA android-ndk
+          docker tag ghcr.io/kwopin/internal/android-ndk:$GITHUB_SHA ghcr.io/kwopin/internal/android-ndk:latest
+          docker push ghcr.io/kwopin/internal/android-ndk
