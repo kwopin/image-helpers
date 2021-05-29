@@ -1,0 +1,21 @@
+
+name: android-emulator
+
+on:
+  push:
+    branches: [master]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and push
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
+          docker build --tag ghcr.io/kwopin/internal/android-emulator:$GITHUB_SHA android-emulator
+          docker tag ghcr.io/kwopin/internal/android-emulator:$GITHUB_SHA ghcr.io/kwopin/internal/android-emulator:latest
+          docker push ghcr.io/kwopin/internal/android-emulator
