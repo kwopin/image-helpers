@@ -15,6 +15,7 @@ jobs:
       - name: Build and push
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
-          docker build --tag ghcr.io/kwopin/helpers/android-ndk:$GITHUB_SHA android-ndk
+          docker pull ghcr.io/kwopin/helpers/android-ndk:latest
+          docker build --tag ghcr.io/kwopin/helpers/android-ndk:$GITHUB_SHA --cache-from ghcr.io/kwopin/helpers/android-ndk:latest android-ndk
           docker tag ghcr.io/kwopin/helpers/android-ndk:$GITHUB_SHA ghcr.io/kwopin/helpers/android-ndk:latest
           docker push ghcr.io/kwopin/helpers/android-ndk

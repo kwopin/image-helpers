@@ -15,6 +15,7 @@ jobs:
       - name: Build and push
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
-          docker build --tag ghcr.io/kwopin/helpers/ubuntu-focal:$GITHUB_SHA ubuntu-focal
+          docker pull ghcr.io/kwopin/helpers/ubuntu-focal:latest
+          docker build --tag ghcr.io/kwopin/helpers/ubuntu-focal:$GITHUB_SHA --cache-from ghcr.io/kwopin/helpers/ubuntu-focal:latest ubuntu-focal
           docker tag ghcr.io/kwopin/helpers/ubuntu-focal:$GITHUB_SHA ghcr.io/kwopin/helpers/ubuntu-focal:latest
           docker push ghcr.io/kwopin/helpers/ubuntu-focal
