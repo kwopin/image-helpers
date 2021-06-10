@@ -1,4 +1,3 @@
-
 name: alpine
 
 on:
@@ -16,6 +15,6 @@ jobs:
       - name: Build and push
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
-          docker build --build-arg CMAKE_DOWNLOAD_ARTIFACT_TOKEN=${{ secrets.CMAKE_DOWNLOAD_ARTIFACT_TOKEN }} --tag ghcr.io/kwopin/internal/alpine:$GITHUB_SHA alpine
-          docker tag ghcr.io/kwopin/internal/alpine:$GITHUB_SHA ghcr.io/kwopin/internal/alpine:latest
-          docker push ghcr.io/kwopin/internal/alpine
+          docker build --build-arg CMAKE_DOWNLOAD_ARTIFACT_TOKEN=${{ secrets.CMAKE_DOWNLOAD_ARTIFACT_TOKEN }} --tag ghcr.io/kwopin/helpers/alpine:$GITHUB_SHA alpine
+          docker tag ghcr.io/kwopin/helpers/alpine:$GITHUB_SHA ghcr.io/kwopin/helpers/alpine:latest
+          docker push ghcr.io/kwopin/helpers/alpine

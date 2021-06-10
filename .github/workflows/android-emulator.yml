@@ -1,4 +1,3 @@
-
 name: android-emulator
 
 on:
@@ -17,6 +16,6 @@ jobs:
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
           docker pull ghcr.io/kwopin/internal/android-emulator:latest
-          docker build --tag ghcr.io/kwopin/internal/android-emulator:$GITHUB_SHA --cache-from ghcr.io/kwopin/internal/android-emulator:latest android-emulator
-          docker tag ghcr.io/kwopin/internal/android-emulator:$GITHUB_SHA ghcr.io/kwopin/internal/android-emulator:latest
-          docker push ghcr.io/kwopin/internal/android-emulator
+          docker build --tag ghcr.io/kwopin/helpers/android-emulator:$GITHUB_SHA --cache-from ghcr.io/kwopin/internal/android-emulator:latest android-emulator
+          docker tag ghcr.io/kwopin/helpers/android-emulator:$GITHUB_SHA ghcr.io/kwopin/helpers/android-emulator:latest
+          docker push ghcr.io/kwopin/helpers/android-emulator
