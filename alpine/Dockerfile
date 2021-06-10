@@ -7,7 +7,7 @@ ARG CMAKE_DOWNLOAD_ARTIFACT_TOKEN
 ENV LANG=C.UTF-8
 ENV TZ=Etc/UTC
 
-RUN apk add --no-cache ca-certificates tzdata build-base
+RUN apk add --no-cache file libgomp libgphobos gmp isl22 mpfr4 mpc1 clang ninja ca-certificates tzdata
 
 # This dependency on a different RUN command to highlight it and not forget it
 # later

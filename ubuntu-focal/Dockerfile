@@ -11,8 +11,10 @@ RUN set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
 		ca-certificates netbase tzdata \
-		build-essential \
+		clang ninja-build \
 	; \
+	update-alternatives --set cc /usr/bin/clang ; \
+	update-alternatives --set c++ /usr/bin/clang++; \
 	rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
