@@ -16,7 +16,7 @@ RUN set -eux; \
         wget \
         unzip \
         openjdk-11-jdk \
-        make \
+        ninja-build \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
